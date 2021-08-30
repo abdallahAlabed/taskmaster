@@ -3,6 +3,9 @@ package com.example.taskmaster;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class AllTasks extends AppCompatActivity {
 
@@ -11,6 +14,8 @@ public class AllTasks extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_tasks);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
     }
 
 }
