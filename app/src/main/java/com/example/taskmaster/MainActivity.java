@@ -1,7 +1,10 @@
 package com.example.taskmaster;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +12,8 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -73,7 +78,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(goToSetting);
             }
         });
+
+        ArrayList<TaskModel> allTaskModel = new ArrayList<TaskModel>();
+        allTaskModel.add(new TaskModel("sleeping","new","بتحلم فيه بس ما بتشوفه "));
+        allTaskModel.add(new TaskModel("coding","assigned","يا ريت فالحين فيه "));
+        allTaskModel.add(new TaskModel("eating","progress","hallelooya"));
+
+        RecyclerView taskModelRecuclerView = findViewById(R.id.taskRecylerView);
+        taskModelRecuclerView.setLayoutManager(new LinearLayoutManager(this));
+        taskModelRecuclerView.setAdapter(new TaskAdaptaer(allTaskModel));
+
     }
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onResume() {
         super.onResume();
@@ -82,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
         TextView instructorNameView = findViewById(R.id.userName);
         instructorNameView.setText(userName+ " tasks");
+
 
     }
 }
